@@ -1,38 +1,13 @@
 import {useState} from "react";
 import {InputComponent} from "./InputComponent";
 import {DropdownComponent as SelectComponent} from "./DropdownComponent";
-import {academicTitles, articleKeywords, articleTypes, researchFields} from "../utilies/dataFolder"
+import {articleKeywords, articleTypes, researchFields} from "../utilies/dataFolder"
 import {PiUpload} from "react-icons/pi";
 import {GrDocumentVerified} from "react-icons/gr";
 import {blobChecker, emailChecker, generalChecker, selectBoxChecker, zipCodeChecker} from "../utilies/constarints";
 import {BlobComponent} from "./BlobComponent";
 import {UserInformationComponent} from "./UserInformationComponent";
-
-function mapToSimplified(inputList) {
-    return inputList.map(item => {
-        const simplifiedItem = {};
-        const address = {}; // New object to store address properties
-
-        for (const key in item) {
-            if (key === 'title') {
-                simplifiedItem[key] = item[key].value[0];
-            } else if (['country', 'state', 'zipCode'].includes(key)) {
-                address[key] = item[key].value;
-            } else {
-                simplifiedItem[key] = item[key].value;
-            }
-        }
-
-        // Add the address object to the simplifiedItem if it has properties
-        if (Object.keys(address).length > 0) {
-            simplifiedItem.address = address;
-        }
-
-        return simplifiedItem;
-    });
-}
-
-
+import {mapToSimplifiedList, mapToSimplifiedObject} from "./util";
 
 const initialAuthor = {
     title: {value: [], isEdited: false},
@@ -107,7 +82,7 @@ export const FormManagerComponent = ({setModal}) => {
         setEntries((prevState) => ({
             ...prevState,
             authors: prevState.authors.map((author, i) =>
-                i === index ? { ...author, "[field]": { value: event.target.value, isEdited: false } } : author
+                i === index ? { ...author, [field]: { value: event.target.value, isEdited: false } } : author
             ),
         }));
     }
@@ -174,7 +149,7 @@ export const FormManagerComponent = ({setModal}) => {
         }, '');
 
         const extractedArticleType = entries.article_type.value?.[0] ?? '';
-        const authors = mapToSimplified(entries.authors)
+        const authors = mapToSimplifiedList(entries.authors)
         console.log(authors)
 
 
@@ -189,7 +164,7 @@ export const FormManagerComponent = ({setModal}) => {
                 "submissionFile": file,
             }, "paperHash": "00000"
         };
-        console.log(requestBody);
+
 
 
         const formData = new FormData();
@@ -220,7 +195,15 @@ export const FormManagerComponent = ({setModal}) => {
         } else if (response.status === 400) {
             setModal((prevState) => {
                 Object.keys(entries).forEach((key) => {
-                    onLostBlur(key)
+                    if(key === "authors"){
+                        for(let index = 0; index < entries.authors.length; index++){
+                            Object.keys(entries.authors[index]).forEach(
+                                (key) => handleUserLostBlur(index,key)
+                            )
+                        }
+                    }else{
+                        onLostBlur(key)
+                    }
                 });
                 return {
                     ...prevState,
