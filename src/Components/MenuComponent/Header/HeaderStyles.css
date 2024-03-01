@@ -1,0 +1,44 @@
+.header {
+    background-color: black;
+    position: sticky;
+    padding: 1rem;
+    width: 100%;
+    z-index: 1000;
+}
+
+
+.header .button-container {
+    display: inline-flex;
+    align-items: end;
+    padding: 0.2rem 1rem;
+    border: 5px solid black;
+    border-radius: 3rem;
+    background-color: black;
+    text-decoration: none;
+
+}
+
+
+.button-container .icon {
+    color: whitesmoke;
+    font-size: 1.5rem;
+}
+
+.button-container span {
+    color: whitesmoke;
+    background-color: inherit;
+    font-size: 0.8rem;
+    position: relative;
+    left: 0.25rem;
+    bottom: 0.2rem;
+}
+
+.header .button-container:hover span {
+    text-decoration: underline; /* Add underline on hover */
+
+}
+.header .button-container:hover {
+    background-color: #232323;
+    border-color: #232323;
+    border-radius: 3rem;
+}

@@ -1,0 +1,21 @@
+.footer{
+    background-color: black;
+    position: fixed;
+    padding: 1rem;
+    width: 100%;
+    bottom: 0;
+    text-align: center;
+    z-index: 1000;
+
+}
+
+.footer a{
+    color: whitesmoke;
+    text-decoration: none;
+    font-size: 1rem;
+    padding: 0 1rem;
+}
+
+.footer a:hover{
+    text-decoration: underline;
+}

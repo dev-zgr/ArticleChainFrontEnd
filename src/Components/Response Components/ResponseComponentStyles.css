@@ -1,0 +1,45 @@
+.response-container{
+    position: relative;
+    padding: 1rem;
+    margin: 0 20rem;
+    background-color: white;
+    border: 2px solid #e6f0fd;
+    border-radius: 10px;
+    top: 40%; /* Move the container to the vertical center */
+    transform: translate(0, -40%);
+}
+
+.response-container h3{
+    text-align: center;
+}
+
+.response-container__buttons{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.response-container p{
+    text-align: center;
+}
+
+.response-container button{
+    background-color: #2997ff;
+    border: 4px solid #2195ff;
+    border-radius: 1rem;
+    padding: .2rem 1rem;
+    margin: 1rem 1rem 1rem 1rem;
+    font-size: 1rem;
+    color: whitesmoke;
+}
+
+.response-container button:hover{
+    background-color: #3da0ff;
+    border: 4px solid#3da0ff;
+    border-radius: 1rem;
+    padding: .2rem 1rem;
+    margin: 1rem 1rem 1rem 1rem;
+    font-size: 1rem;
+    color: whitesmoke;
+}
+

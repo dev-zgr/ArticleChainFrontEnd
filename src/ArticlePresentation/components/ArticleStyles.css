@@ -1,0 +1,106 @@
+body{
+    padding: 0;
+    background-color: #fff;
+}
+.article-container{
+
+    padding: 0;
+    box-sizing: border-box;
+
+}
+
+.article{
+
+    margin: 0.5rem 2rem;
+    padding: 0.6rem;
+    border: 2px solid #dedcdc;
+    border-radius: 10px;
+    background-color: #f5f5f5;
+
+}
+
+.article--type{
+    position: relative;
+    display: inline-block;
+    background-color: #d30000;
+    color: whitesmoke;
+    padding: 0.4rem;
+    margin:0.1rem;
+    border : 4px solid #d50101;
+    border-radius: 10px;
+}
+
+.article--field{
+    display: inline-block;
+    position: relative;
+    background-color: #1e851f;
+    color: whitesmoke;
+    padding: 0.4rem;
+    margin:0.1rem;
+    border : 4px solid #1e851f;
+    border-radius: 10px;
+}
+
+.article--date{
+    display: inline-block;
+    position: relative;
+    float: right;
+    background-color: #12298a;
+    color: whitesmoke;
+    padding: 0.4rem;
+    margin:0.1rem;
+    border : 4px solid #12298a;
+    border-radius: 10px;
+}
+
+.article h3{
+    margin:0.1rem;
+    padding: 0;
+    text-align: left;
+    font-size: 1.5rem;
+    color: black;
+}
+
+.article h3:hover{
+    text-decoration: underline;
+}
+
+.article--authors{
+    display: inline-block;
+    margin: 0.1rem;
+}
+
+.article--authors:hover{
+    text-decoration: underline;
+}
+
+.article--abstract{
+    display: inline-block;
+    margin: 0.1rem;
+    text-align: justify;
+}
+.article--authors:hover{
+    text-decoration: underline;
+}
+
+
+.article--authors{
+    display: inline-block;
+    margin: 0.1rem;
+}
+
+.article--keyword{
+    margin: 0.1rem;
+}
+
+.article--from{
+    display: inline-block;
+    margin: 0.1rem 0.1rem 0.1rem 0.5rem;
+}
+
+.content-wrapper{
+    padding: 1rem;
+    margin: 2rem 4rem;
+    border: 2px solid inherit;
+    border-radius: 10px;
+}
