@@ -1,0 +1,5 @@
+.submit-decision_input-group{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

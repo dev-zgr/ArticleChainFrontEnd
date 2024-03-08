@@ -98,7 +98,58 @@ body{
     margin: 0.1rem 0.1rem 0.1rem 0.5rem;
 }
 
-.content-wrapper{
+.article--accept-revision{
+    display: inline-block;
+    position: relative;
+    bottom: .8rem;
+    float: right;
+    padding: 0.4rem;
+    margin:0.1rem;
+    border-radius: 10px;
+    background-color: #1e851f;
+    color: whitesmoke;
+    border : 4px solid #1e851f;
+}
+
+.article--reject-revision{
+    display: inline-block;
+    position: relative;
+    bottom: .8rem;
+    float: right;
+    padding: 0.4rem;
+    margin:0.1rem;
+    border-radius: 10px;
+    background-color: #d30000;
+    color: whitesmoke;
+    border : 4px solid #d50101;
+}
+
+.article--accept-revision:hover{
+    background-color: #2a8a2b;
+    border : 4px solid #278828;
+}
+
+.article--reject-revision:hover{
+    background-color: #e32020;
+    border : 4px solid #e32020;
+}
+
+
+
+.article-download-article{
+    background-color: dimgray;
+    color: whitesmoke;
+    border : 4px solid dimgray;
+}
+
+.article-download-article:hover{
+    background-color: #757575;
+    color: whitesmoke;
+    border : 4px solid #757575;
+}
+
+
+    .content-wrapper{
     padding: 1rem;
     margin: 2rem 4rem;
     border: 2px solid inherit;

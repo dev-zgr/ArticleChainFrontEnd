@@ -29,25 +29,8 @@ const pages = [{
     {
         name: "Pending Review",
         icon: <FaListUl className="icon"/>,
-        url: "/pending-articles",
+        url: "/pending-reviews",
     },
 ];
-const pages2 = [
-    {
-        name: "About Us",
-        pageNumber: 6
-    },
-    {
-        name: "Term of Use",
-        pageNumber: 7
-    },
-    {
-        name: "Legal",
-        pageNumber: 8
-    },
-    {
-        name: "Contact Us",
-        pageNumber: 9
-    }
-]
+
 export {pages};

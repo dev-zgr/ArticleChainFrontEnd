@@ -1,11 +1,11 @@
 import ErrorHolder from "../utilities/ErrorHolder";
-import {ArticleComponent} from "./ArticleComponent";
+import {PendingArticleComponent} from "./PendingArticleComponent";
 import useFetch from "../utilities/useFetch";
 
 import {SearchFormComponent} from "./SearchFormComponent";
 import categories from "../utilities/categories";
 
-export const ArticleManager = ({url}) => {
+export const ArticleManager = ({url,dynamicComponent:DynamicComponent}) => {
     const {load, article, error, parameters} = useFetch(url);
 
 
@@ -43,7 +43,7 @@ export const ArticleManager = ({url}) => {
                         <div className={"article-container"}>
                             {
                                 article.articles.map((submission) => {
-                                    return (<ArticleComponent
+                                    return (<DynamicComponent
                                         key={submission.tx_id}
                                         article_date={submission.article.article_date}
                                         article_keywords={submission.article.article_keywords}
@@ -54,6 +54,8 @@ export const ArticleManager = ({url}) => {
                                         institution={submission.article.institution}
                                         department={submission.article.department}
                                         abstract={submission.article.paperAbstract}
+                                        tx_id={submission.tx_id}
+                                        file_uuid={submission.fileIdentifier}
                                     />);
                                 })
                             }

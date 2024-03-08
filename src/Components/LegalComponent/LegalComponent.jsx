@@ -1,6 +1,6 @@
 export const LegalComponent = () => {
     return (<div className='content-wrapper'>
-        <div className='content-wrapper'>
+        <div className={"content-wrapper__aboutus"}>
             <h1>Article Chain - Legal Disclaimer</h1>
             <p>Last Updated: [Date]</p>
             <p>The information provided
