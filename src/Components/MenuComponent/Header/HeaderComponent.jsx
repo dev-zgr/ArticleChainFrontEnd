@@ -1,24 +1,20 @@
-import React, {forwardRef} from 'react';
+import React from 'react';
 import './HeaderStyles.css';
-import {pages} from "../dataFolder";
+import {pageLoggedOut, pagesLoggedIn} from "../dataFolder";
 import {HeaderButton} from "./HeaderButton";
 
 
-export const HeaderComponent = () => {
+export const HeaderComponent = ({isLoggedIn}) => {
     return (
         <header className={"header"}>
-            {pages.map(
-                (page) => {
-                    return (
-                        <HeaderButton
-                            name={page.name}
-                            icon={page.icon}
-                            url={page.url}
-                            key={page.pageNumber}
-                        ></HeaderButton>
-                    )
-                }
-            )}
+            {(isLoggedIn ? pagesLoggedIn : pageLoggedOut).map((page) => (
+                <HeaderButton
+                    name={page.name}
+                    icon={page.icon}
+                    url={page.url}
+                    key={page.pageNumber}
+                />
+            ))}
         </header>
     )
 }

@@ -85,9 +85,6 @@ export const PendingReviewFormManager = ({title, message, infoMessage,setModalCo
 
         <div className="response-container">
             {infoMessage ?<>
-
-
-
                 </> :
 
                 <div >

@@ -6,8 +6,15 @@ import {ResponseComponent} from "../Components/Response Components/ResponseCompo
 import {useState} from "react";
 import "../Components/Response Components/ResponseComponentStyles.css";
 import {DropdownComponent} from "../Components/FormComponent/components/DropdownComponent";
+import {useSelector} from "react-redux";
+import {StrictModalComponent} from "../Components/Modal/StrictModalComponent";
+import {LoginComponent} from "../Components/LoginComponent/LoginComponent";
+import {ArticleManager} from "../ArticlePresentation/components/ArticleManager";
+import {PendingArticleComponent} from "../ArticlePresentation/components/PendingArticleComponent";
 
 export const SubmitArticle = () => {
+    const loggedIn = useSelector(store => {return store.loginSlice});
+
     const [modal, setModal] = useState({
         modalOpen: false,
         responseCode: "",
@@ -38,9 +45,20 @@ export const SubmitArticle = () => {
                     </ResponseComponent>
                 </ModalComponent>
             }
-            <MenuComponent></MenuComponent>
-            <FormManagerComponent setModal={setModal}/>
+            <MenuComponent/>
+            {
+                !loggedIn.isLoggedIn  ? <>
+                        <StrictModalComponent>
+                            <LoginComponent/>
 
+                        </StrictModalComponent>
+                    </> :
+                    <>
+                        <FormManagerComponent setModal={setModal}/>
+                        <FooterComponent/>
+                    </>
+
+            }
             <FooterComponent/>
         </>
     )

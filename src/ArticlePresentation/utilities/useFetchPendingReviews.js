@@ -66,6 +66,7 @@ const urlParameterAdded = (url, parameters) => {
         }
         firstParameter = false;
     }
+    console.log(newUrl);
     return newUrl;
 }
 

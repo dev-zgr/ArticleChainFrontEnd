@@ -2,7 +2,11 @@
 const isBlankChecker = (entries,prop) => entries[prop].value.trim().length === 0;
 
 //returns true if the value is edited
-const isEditedChecker = (entries,prop) => entries[prop].isEdited
+const isEditedChecker = (entries,prop) => entries[prop].isEdited;
+
+//returns true if the user attempted login
+ const isAttemptedLogin = (entries,prop) => entries[prop].attemptedLogin;
+
 
 //returns true if the value is greater than specified limit
 const isLargerThanChecker = (entries,prop,limit) => entries[prop].value.length > limit;
@@ -58,5 +62,6 @@ function blobChecker(entries, prop, propName,limit){
         return `${propName} Can\'t be larger than ${limit} characters`
     }
 }
+
 export {generalChecker,zipCodeChecker,emailChecker, selectBoxChecker,blobChecker};
 

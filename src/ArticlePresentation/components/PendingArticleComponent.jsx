@@ -3,6 +3,7 @@ import {ModalComponent} from "../../Components/Modal/ModalComponent";
 import {ResponseComponent} from "../../Components/Response Components/ResponseComponent";
 import {useState} from "react";
 import {submissionPostHandler} from "./submissionPostHandler";
+import {useDispatch, useSelector} from "react-redux";
 
 const ACCEPTED = "ACCEPTED"
 const REJECTED = "REJECTED"
@@ -26,13 +27,16 @@ export const PendingArticleComponent = ({
         message: "",
         infoMessage: false
     });
+    const dispatcher = useDispatch();
+    const userDetails = useSelector(store => {return store.loginSlice});
+    // console.log(userDetails);
 
 
     const handleFormSubmit = (status) => {
         const requestBody = {
-            "reviewerName": "John Doe",
-            "reviewerResearchField": "Computer Science",
-            "reviewerEmail": "john.doe@example.com",
+            "reviewerName": userDetails.accountDetails.name,
+            "reviewerResearchField": userDetails.accountDetails.researchField,
+            "reviewerEmail": userDetails.accountDetails.email,
             "referringTxId": tx_id,
             "acceptanceStatus": status
         }

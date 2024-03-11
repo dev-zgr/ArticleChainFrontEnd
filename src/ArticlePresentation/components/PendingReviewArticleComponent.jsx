@@ -36,6 +36,23 @@ export const PendingReviewArticleComponent = ({
         })
     }
 
+    const fileDownload =  (file_uuid) => {
+        fetch(`http://localhost:8080/file?uuid=${file_uuid}`).then((response) => {
+            response.blob().then((blob) => {
+
+                // Creating new object of PDF file
+                const fileURL =
+                    window.URL.createObjectURL(blob);
+
+                // Setting various property values
+                let alink = document.createElement("a");
+                alink.href = fileURL;
+                alink.download = "SamplePDF.pdf";
+                alink.click();
+            });
+        });
+    }
+
 
 
     return (<>
@@ -82,6 +99,7 @@ export const PendingReviewArticleComponent = ({
                 <button
                     className={"article--accept-revision article-download-article"}
                     onClick={() => {
+                        fileDownload(file_uuid)
                     }}
                 >Download Article
                 </button>

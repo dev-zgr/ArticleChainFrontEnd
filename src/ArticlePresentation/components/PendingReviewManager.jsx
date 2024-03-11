@@ -1,9 +1,11 @@
 import useFetch from "../utilities/useFetch";
 import useFetchPendingReviews from "../utilities/useFetchPendingReviews";
 import ErrorHolder from "../utilities/ErrorHolder";
+import {useSelector} from "react-redux";
 
 export const PendingReviewManager = ({url,dynamicComponent:DynamicComponent}) => {
-    const {load, article, error, parameters} = useFetchPendingReviews(url, {"email":"john.doe@example.com"});
+    const userInformation = useSelector(store => {return store.loginSlice});
+    const {load, article, error, parameters} = useFetchPendingReviews(url, {"email": userInformation.accountDetails.email});
 
 
     if (error.error) {
@@ -30,7 +32,7 @@ export const PendingReviewManager = ({url,dynamicComponent:DynamicComponent}) =>
                                         department={submission.articleEmbeddable.department}
                                         abstract={submission.articleEmbeddable.paperAbstract}
                                         tx_id={submission.tx_id}
-                                        file_uuid={submission.fileIdentifier}
+                                        file_uuid={submission.articleEmbeddable.fileIdentifier}
                                         referringReviewTXID={submission.referringReviewTXID}
                                     />);
                                 })

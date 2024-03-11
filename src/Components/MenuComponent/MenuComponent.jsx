@@ -1,12 +1,12 @@
 import {useState} from "react";
 import {HeaderComponent} from "./Header/HeaderComponent";
+import {useSelector} from "react-redux";
 
 export const MenuComponent = () => {
-    const [selectedPage, setSelectedPage] = useState(1)
-
+    const loggedIn = useSelector(store => {return store.loginSlice});
     return (
         <>
-            <HeaderComponent setSelectedPage={setSelectedPage}></HeaderComponent>
+            <HeaderComponent isLoggedIn={loggedIn.isLoggedIn}></HeaderComponent>
         </>
     )
 }

@@ -3,14 +3,33 @@ import {FooterComponent} from "../Components/FooterComponent/Footer/FooterCompon
 import {MenuComponent} from "../Components/MenuComponent/MenuComponent";
 import "../Components/Response Components/ResponseComponentStyles.css"
 import {PendingArticleComponent} from "../ArticlePresentation/components/PendingArticleComponent";
+import {useSelector} from "react-redux";
+import {StrictModalComponent} from "../Components/Modal/StrictModalComponent";
+import {LoginComponent} from "../Components/LoginComponent/LoginComponent";
 
 export const PendingArticles = () => {
+    const loggedIn = useSelector(store => {return store.loginSlice});
 
 
     return (
         <>
             <MenuComponent/>
-            <ArticleManager url={"pending-submission"} dynamicComponent={PendingArticleComponent}/>
+
+
+            {
+                !loggedIn.isLoggedIn  ? <>
+                    <StrictModalComponent>
+                        <LoginComponent/>
+
+                    </StrictModalComponent>
+                    </> :
+                    <>
+                        <ArticleManager url={"pending-submission"} dynamicComponent={PendingArticleComponent}/>
+                        <FooterComponent/>
+                    </>
+
+            }
+
             <FooterComponent/>
         </>
     )
